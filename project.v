@@ -12,43 +12,44 @@
 // NSL and SM
 always @ (posedge Clk)
   // check for button press in each state and do corresponding logic
-  if(state == Start)
-    begin
-    // Initialize board
+  case(state)
+    START :
+      begin
+      // Initialize board
 
-    // Initialize cat
+      // Initialize cat
 
-    //Wait for button press
-      //in button press, go to state play and select first block
+      //Wait for button press
+        //in button press, go to state play and select first block
 
-    end
+      end
 
-  else if(state == Play)
-    begin
-    //Wait for press
+    PLAY :
+      begin
+      //Wait for press
 
-    // if press, update block and move cat
+      // if press, update block and move cat
 
-    // then check for win or loss and change to corresponding state
-
-
-    end
-
-  else if(state == GameOver)
-    begin
-    // show loss screen
-
-    // move back to state "start"
+      // then check for win or loss and change to corresponding state
 
 
-    end
+      end
+
+    GAMEOVER :
+      begin
+      // show loss screen
+
+      // move back to state "start"
 
 
-  else // GameWin state
-    begin
-    // show win screen
-
-    // move back to state "start"
+      end
 
 
-    end
+    GAMEWIN :
+      begin
+      // show win screen
+
+      // move back to state "start"
+
+
+      end
