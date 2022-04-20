@@ -1,6 +1,6 @@
 // initialize ALL variables
-module CatTrap_top( ClkPort, BtnC, BtnU,  
-Sw0, Sw1, Sw2, Sw3, Sw12, Sw11, Sw10, Sw9, Sw8,
+module CatTrap_top( ClkPort, BtnC, BtnU,
+Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7, Sw15, Sw14, Sw13, Sw12, Sw11, Sw10, Sw9, Sw8,
 An7, An6, An5, An4, An3, An2, An1, An0,
 Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp
 
@@ -39,8 +39,8 @@ assign {MemOE, MemWR, RamCS, QuadSpiFlashCS} = 4'b1111;
 
 
 assign Reset = BtnC;
-assign Row = {Sw11, Sw10, Sw9, Sw8};
-assign Col = {Sw3, Sw2, Sw1, Sw0};
+assign Row = {Sw15, Sw14, Sw13, Sw12, Sw11, Sw10, Sw9, Sw8};
+assign Col = {Sw7, Sw6, Sw5, Sw4, Sw3, Sw2, Sw1, Sw0};
 
 //------------
 // Our clock is too fast (100MHz) for SSD scanning
@@ -60,6 +60,9 @@ assign	sys_clk = board_clk;
 
 assign Start = BtnU;
 
+wire [11:0] background;
+wire [11:0] rgb;
+display_controller dc(.clk(ClkPort), .Row(Row), .Col(Col), .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), .vCount(vc));
 
 assign SSD4 = Row[3:0];
 assign SSD0 = Col[3:0];

@@ -1,11 +1,13 @@
 // Initialize modules
-
+module CatTrap (ClkPort, BtnC, BtnU)
 
 // Initialize inputs and outputs
 // btn will be select button
+input ClkPort;
+input BtnC;
+input BtnU;
 
 // Initialize cat
-
 
 
 
@@ -27,8 +29,11 @@ always @ (posedge Clk)
     PLAY :
       begin
       //Wait for press
+        if (BtnC == 1){
+            // if press, update block and move cat
 
-      // if press, update block and move cat
+
+        }
 
       // then check for win or loss and change to corresponding state
 
