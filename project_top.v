@@ -1,5 +1,9 @@
 // initialize ALL variables
-module CatTrap_top(
+module CatTrap_top( ClkPort, BtnC, BtnU,  
+Sw0, Sw1, Sw2, Sw3, Sw12, Sw11, Sw10, Sw9, Sw8,
+An7, An6, An5, An4, An3, An2, An1, An0,
+Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp
+
 
 );
 
@@ -35,6 +39,8 @@ assign {MemOE, MemWR, RamCS, QuadSpiFlashCS} = 4'b1111;
 
 
 assign Reset = BtnC;
+assign Row = {Sw11, Sw10, Sw9, Sw8};
+assign Col = {Sw3, Sw2, Sw1, Sw0};
 
 //------------
 // Our clock is too fast (100MHz) for SSD scanning
