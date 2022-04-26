@@ -17,7 +17,9 @@ module project(
    );
 	wire block_fill;
 
-    reg [2:0] state;
+    reg [5:0] state;
+	
+	
 
 
 	parameter WHITE = 12'b1111_1111_1111;
@@ -25,10 +27,10 @@ module project(
 	parameter ORANGE = 12'b1111_1000_0000;
 
     localparam
-    START = 3'b001,
-    PLAY	= 3'b010,
-    GAMEOVER = 3'b100,
-    GAMEWIN = 3'b101;
+    START = 5'b00001,
+    PLAY	= 5'b00010,
+    GAMEOVER = 5'b00100,
+    GAMEWIN = 5'b01000;
 
 	//init grid w/ white squares and one random center orange square for cat
 
