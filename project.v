@@ -6,7 +6,7 @@ module project(
 	output reg [9:0] hCount, 
 	output reg [0:0] vCount,
     input BtnC,
-    input BtnU,
+    input BtnD,
 	output reg [11:0] rgb,
 	output reg [11:0] background,
 	input [7:0] Row,

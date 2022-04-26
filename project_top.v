@@ -1,7 +1,7 @@
 // initialize ALL variables
 `timescale 1ns / 1ps
 
-module CatTrap_top( clk, BtnC, BtnU,
+module CatTrap_top( clk, BtnC, BtnD,
 Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7, Sw15, Sw14, Sw13, Sw12, Sw11, Sw10, Sw9, Sw8,
 An7, An6, An5, An4, An3, An2, An1, An0,
 Ca, Cb, Cc, Cd, Ce, Cf, Cg, vgaR, vgaG, vgaB,  hSync, vSync
@@ -10,7 +10,7 @@ Ca, Cb, Cc, Cd, Ce, Cf, Cg, vgaR, vgaG, vgaB,  hSync, vSync
 );
 
 input clk;
-input BtnC, BtnU;
+input BtnC, BtnD;
 input    Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7;
 input    Sw8, Sw9, Sw10, Sw11, Sw12, Sw13, Sw14, Sw15;
 
@@ -28,6 +28,8 @@ wire		board_clk, sys_clk;
 wire [2:0] 	ssdscan_clk;
 wire Start;
 wire [7:0] Row, Col;
+wire down_button;
+wire center_button;
 
 // to produce divided clock
 reg [26:0]	DIV_CLK;
@@ -63,7 +65,7 @@ always @(posedge clk, posedge Reset)
 assign	sys_clk = clk;
 // assign	sys_clk = DIV_CLK[25];
 
-assign Start = BtnU;
+assign Start = BtnC;
 
 wire [11:0] background;
 wire [11:0] rgb;
@@ -71,7 +73,7 @@ wire [11:0] rgb;
 
 project sc(.clk(clk), .Row(Row), .Col(Col), 
 .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), 
-.vCount(vc), .BtnC(BtnC), .BtnU(BtnU), .rgb(rgb), .background(background));
+.vCount(vc), .BtnC(BtnC), .BtnD(BtnD), .rgb(rgb), .background(background));
 
 display_controller dc(.clk(clk), .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), .vCount(vc));
 
