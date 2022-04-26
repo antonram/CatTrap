@@ -4,8 +4,8 @@
 module CatTrap_top( clk, BtnC, BtnD,
 Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7, Sw15, Sw14, Sw13, Sw12, Sw11, Sw10, Sw9, Sw8,
 An7, An6, An5, An4, An3, An2, An1, An0,
-Ca, Cb, Cc, Cd, Ce, Cf, Cg, vgaR, vgaG, vgaB,  hSync, vSync,
-MemOE, MemWR, RamCS, QuadSpiFlashCS
+Ca, Cb, Cc, Cd, Ce, Cf, Cg, vgaR, vgaG, vgaB,  hSync, vSync
+
 
 
 );
@@ -15,7 +15,6 @@ input BtnC, BtnD;
 input    Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7;
 input    Sw8, Sw9, Sw10, Sw11, Sw12, Sw13, Sw14, Sw15;
 
-output MemOE, MemWR, RamCS, QuadSpiFlashCS;
 output An0, An1, An2, An3, An4, An5, An6, An7;
 output   Ca, Cb, Cc, Cd, Ce, Cf, Cg;
 output [3:0] vgaR, vgaG, vgaB;
@@ -49,7 +48,6 @@ assign Row = {Sw15, Sw14, Sw13, Sw12, Sw11, Sw10, Sw9, Sw8};
 assign Col = {Sw7, Sw6, Sw5, Sw4, Sw3, Sw2, Sw1, Sw0};
 assign {MemOE, MemWR, RamCS, QuadSpiFlashCS} = 4'b1111;
 
-BUFGP BUFGP1(board_clk, clk);
 
 //------------
 // Our clock is too fast (100MHz) for SSD scanning

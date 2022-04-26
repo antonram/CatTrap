@@ -4,7 +4,7 @@ module project(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
 	input bright,
 	input [9:0] hCount,
-	input [0:0] vCount,
+	input [9:0] vCount,
     input BtnC,
     input BtnD,
 	output reg [11:0] rgb,
