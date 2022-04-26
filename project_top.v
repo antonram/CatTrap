@@ -72,7 +72,7 @@ wire [11:0] rgb;
 
 
 project sc(.clk(clk), .Row(Row), .Col(Col), 
-.hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), 
+.bright(bright), .hCount(hc), 
 .vCount(vc), .BtnC(BtnC), .BtnD(BtnD), .rgb(rgb), .background(background),
 .center_button(center_button), .down_button(down_button));
 
