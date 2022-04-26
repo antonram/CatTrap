@@ -3,16 +3,14 @@
 module project(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
 	input bright,
-	output reg [9:0] hCount,
-	output reg [0:0] vCount,
+	input [9:0] hCount,
+	input [0:0] vCount,
     input BtnC,
     input BtnD,
 	output reg [11:0] rgb,
 	output reg [11:0] background,
 	input [7:0] Row,
 	input [7:0] Col,
-	output hSync,
-	output vSync,
 	input down_button,
 	input center_button
 
@@ -303,9 +301,6 @@ module project(
 	assign bf88 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
   assign board_map [8][8] = bf88;
 
-
-  assign hSync = (hCount < 96) ? 1:0;
-	assign vSync = (vCount < 2) ? 1:0;
 
 	assign vgaR = rgb[11 : 8];
 	assign vgaG = rgb[7  : 4];
