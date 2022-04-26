@@ -36,6 +36,9 @@ reg [26:0]	DIV_CLK;
 reg [7:0]	SSD;
 wire [7:0]	SSD4, SSD0;
 reg [6:0]  	SSD_CATHODES;
+wire[9:0] hc;
+wire [9:0] vc;
+wire bright;
 
 
 
@@ -64,9 +67,12 @@ assign Start = BtnU;
 
 wire [11:0] background;
 wire [11:0] rgb;
+
+
 display_controller dc(.clk(clk), .Row(Row), .Col(Col), 
 .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), 
 .vCount(vc), .BtnC(BtnC), .BtnU(BtnU), .rgb(rgb), .background(background));
+
 
 assign SSD4 = Row[7:0];
 assign SSD0 = Col[7:0];

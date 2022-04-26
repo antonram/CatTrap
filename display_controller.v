@@ -2,8 +2,9 @@
 
 module display_controller(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
-	input bright,
-	input [9:0] hCount, vCount,
+	output reg bright,
+	output reg [9:0] hCount, 
+	output reg [0:0] vCount,
     input BtnC,
     input BtnU,
 	output reg [11:0] rgb,
@@ -32,10 +33,154 @@ module display_controller(
 	//init grid w/ white squares and one random center orange square for cat
 
 	always @(posedge clk)
+		begin
+			
 		case(state)
 			START :
 				begin
-					if(~bright )	//force black if not inside the display area
+					
+                    //Wait for button press
+                  //if button press, go to state play and select first block
+                    if (BtnC == 1)
+                        begin
+							// add intermediate state for debouncing!!
+                            state <= PLAY;
+                        end
+                    
+                end
+			PLAY :
+				begin
+				//Wait for press
+	        if (BtnC == 1)
+				// add intermediate step for debouncing!!
+	            // if press, update block and move cat
+	            begin
+	            // do stuff
+	            
+	            end
+
+
+
+	        
+
+	      // then check for win or loss and change to corresponding state
+
+
+	           end
+
+	    GAMEOVER :
+	      begin
+	      // show loss screen
+
+	      // move back to state "start"
+
+
+	      end
+
+
+	    GAMEWIN :
+	      begin
+	      // show win screen
+
+	      // move back to state "start"
+
+
+	      end
+
+
+	endcase
+		end
+		
+		
+		assign bf11 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf12 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf13 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf14 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf15 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf16 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf17 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf18 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf21 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf22 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf23 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf24 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf25 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf26 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf27 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf28 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf31 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf32 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf33 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf34 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf35 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf36 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf37 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf38 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf41 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf42 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf43 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf44 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf45 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf46 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf47 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf48 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf51 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf52 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf53 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf54 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf55 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf56 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf57 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf58 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf61 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf62 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf63 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf64 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf65 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf66 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf67 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf68 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf71 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf72 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf73 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf74 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf75 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf76 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf77 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf78 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+	assign bf81 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+	assign bf82 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
+	assign bf83 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
+	assign bf84 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
+	assign bf85 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
+	assign bf86 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
+	assign bf87 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
+	assign bf88 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
+    
+    
+    assign hSync = (hCount < 96) ? 1:0;
+	assign vSync = (vCount < 2) ? 1:0;
+	
+	assign vgaR = rgb[11 : 8];
+	assign vgaG = rgb[7  : 4];
+	assign vgaB = rgb[3  : 0];	
+		
+		
+	always @ (*)
+		begin
+		if(state == START)
+		  begin
+		if(hCount > 10'd143 && hCount < 10'd784 && vCount > 10'd34 && vCount < 10'd516)
+				begin
+					bright <= 1;
+				end
+			else
+				begin
+					bright <= 0;
+				end
+		vCount <= vCount + 1;
+		hCount <= hCount + 1;
+		if(~bright )	//force black if not inside the display area
 						rgb = 12'b0000_0000_1111;
 					else if (bf11)
 						rgb = WHITE;
@@ -167,130 +312,12 @@ module display_controller(
 						rgb = WHITE;
 					else
 						rgb=WHITE;
-                    //Wait for button press
-                  //if button press, go to state play and select first block
-                    if (BtnC == 1)
-                        begin
-							// add intermediate state for debouncing!!
-                            state <= PLAY;
-                        end
-                    
-                end
-			PLAY :
-				begin
-				//Wait for press
-	        if (BtnC == 1)
-				// add intermediate step for debouncing!!
-	            // if press, update block and move cat
-	            begin
-	            // do stuff
-	            
-	            end
+		
+		end
+		
+		end
 
 
 
-	        
-
-	      // then check for win or loss and change to corresponding state
-
-
-	           end
-
-	    GAMEOVER :
-	      begin
-	      // show loss screen
-
-	      // move back to state "start"
-
-
-	      end
-
-
-	    GAMEWIN :
-	      begin
-	      // show win screen
-
-	      // move back to state "start"
-
-
-	      end
-
-
-	endcase
-
-	assign bf11 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf12 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf13 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf14 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf15 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf16 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf17 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf18 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf21 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf22 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf23 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf24 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf25 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf26 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf27 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf28 = ((hCount >= 10'd282) && (hCount <= 10'd332)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf31 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf32 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf33 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf34 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf35 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf36 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf37 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf38 = ((hCount >= 10'd342) && (hCount <= 10'd392)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf41 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf42 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf43 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf44 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf45 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf46 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf47 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf48 = ((hCount >= 10'd402) && (hCount <= 10'd452)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf51 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf52 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf53 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf54 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf55 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf56 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf57 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf58 = ((hCount >= 10'd462) && (hCount <= 10'd512)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf61 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf62 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf63 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf64 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf65 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf66 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf67 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf68 = ((hCount >= 10'd522) && (hCount <= 10'd572)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf71 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf72 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf73 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf74 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf75 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf76 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf77 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf78 = ((hCount >= 10'd582) && (hCount <= 10'd632)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-	assign bf81 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
-	assign bf82 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
-	assign bf83 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
-	assign bf84 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
-	assign bf85 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd275) && (vCount <= 10'd325)) ? 1 : 0;
-	assign bf86 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
-	assign bf87 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
-	assign bf88 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-    
-    
-    assign hSync = (hCount < 96) ? 1:0;
-	assign vSync = (vCount < 2) ? 1:0;
-	
-	assign vgaR = rgb[11 : 8];
-	assign vgaG = rgb[7  : 4];
-	assign vgaB = rgb[3  : 0];
-	
-	
 	
 endmodule
