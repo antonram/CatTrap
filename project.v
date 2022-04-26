@@ -2,7 +2,7 @@
 
 module project(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
-	output reg bright,
+	input bright,
 	output reg [9:0] hCount, 
 	output reg [0:0] vCount,
     input BtnC,
@@ -20,6 +20,9 @@ module project(
 	wire block_fill;
 
     reg [5:0] state;
+	reg [1:0] board_map [0:7] [0:7];
+	reg [2:0] cat_col;
+	reg [2:0] cat_row;
 	
 	
 
@@ -45,7 +48,7 @@ module project(
 					
                     //Wait for button press
                   //if button press, go to state play and select first block
-                    if (BtnC == 1)
+                    if (down_button)
                         begin
 							// add intermediate state for debouncing!!
                             state <= PLAY;
@@ -55,8 +58,7 @@ module project(
 			PLAY :
 				begin
 				//Wait for press
-	        if (BtnC == 1)
-				// add intermediate step for debouncing!!
+	        if (down_button)
 	            // if press, update block and move cat
 	            begin
 	            // do stuff
@@ -172,18 +174,6 @@ module project(
 		
 	always @ (*)
 		begin
-		if(state == START)
-		  begin
-		if(hCount > 10'd143 && hCount < 10'd784 && vCount > 10'd34 && vCount < 10'd516)
-				begin
-					bright <= 1;
-				end
-			else
-				begin
-					bright <= 0;
-				end
-		vCount <= vCount + 1;
-		hCount <= hCount + 1;
 		if(~bright )	//force black if not inside the display area
 						rgb = 12'b0000_0000_1111;
 					else if (bf11)
@@ -319,7 +309,6 @@ module project(
 		
 		end
 		
-		end
 
 
 
