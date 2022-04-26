@@ -69,9 +69,11 @@ wire [11:0] background;
 wire [11:0] rgb;
 
 
-display_controller dc(.clk(clk), .Row(Row), .Col(Col), 
+project sc(.clk(clk), .Row(Row), .Col(Col), 
 .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), 
 .vCount(vc), .BtnC(BtnC), .BtnU(BtnU), .rgb(rgb), .background(background));
+
+display_controller dc(.clk(clk), .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), .vCount(vc));
 
 
 assign SSD4 = Row[7:0];
