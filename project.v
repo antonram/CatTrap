@@ -116,6 +116,9 @@ module project(
                     else
                       state <= GAMEWIN;
 
+										if ((cat_row > 8)||(cat_col > 8))
+											state <= GAMEOVER;
+
 	            end
 
 	               // then check for win or loss and change to corresponding state
