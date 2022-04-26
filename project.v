@@ -3,6 +3,7 @@
 module project(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
 	input bright,
+	input Reset,
 	input [9:0] hCount,
 	input [9:0] vCount,
     input BtnC,
@@ -48,7 +49,9 @@ module project(
 
 	always @(posedge clk)
 		begin
-
+		if (Reset)
+			state <= START;
+			
 		case(state)
 			START :
 				begin
