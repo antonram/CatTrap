@@ -73,9 +73,27 @@ wire [11:0] rgb;
 
 project sc(.clk(clk), .Row(Row), .Col(Col), 
 .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), 
-.vCount(vc), .BtnC(BtnC), .BtnD(BtnD), .rgb(rgb), .background(background));
+.vCount(vc), .BtnC(BtnC), .BtnD(BtnD), .rgb(rgb), .background(background),
+.center_button(center_button), .down_button(down_button));
 
 display_controller dc(.clk(clk), .hSync(hSync), .vSync(vSync), .bright(bright), .hCount(hc), .vCount(vc));
+
+ee354_debouncer #(.N_dc(25)) B_Down(.CLK(clk), 
+						.RESET(Reset), 
+						.PB(BtnD), 
+						.DPB(), 
+						.SCEN(down_button), 
+						.MCEN(), 
+						.CCEN());
+						
+						
+ee354_debouncer #(.N_dc(25)) B_Center(.CLK(clk), 
+						.RESET(Reset), 
+						.PB(BtnC), 
+						.DPB(), 
+						.SCEN(center_button), 
+						.MCEN(), 
+						.CCEN());
 
 
 assign SSD4 = Row[7:0];

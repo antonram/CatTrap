@@ -12,7 +12,9 @@ module project(
 	input [7:0] Row,
 	input [7:0] Col,
 	output hSync,
-	output vSync
+	output vSync,
+	input down_button,
+	input center_button
 	
    );
 	wire block_fill;
