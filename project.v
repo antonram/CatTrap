@@ -3,7 +3,7 @@
 module project(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
 	input bright,
-	output reg [9:0] hCount, 
+	output reg [9:0] hCount,
 	output reg [0:0] vCount,
     input BtnC,
     input BtnD,
@@ -15,7 +15,7 @@ module project(
 	output vSync,
 	input down_button,
 	input center_button
-	
+
    );
 	wire block_fill;
 
@@ -23,8 +23,8 @@ module project(
 	reg [1:0] board_map [0:7] [0:7];
 	reg [2:0] cat_col;
 	reg [2:0] cat_row;
-	
-	
+
+
 
 
 	parameter WHITE = 12'b1111_1111_1111;
@@ -41,11 +41,10 @@ module project(
 
 	always @(posedge clk)
 		begin
-			
+
 		case(state)
 			START :
 				begin
-					
                     //Wait for button press
                   //if button press, go to state play and select first block
                     if (down_button)
@@ -53,7 +52,7 @@ module project(
 							// add intermediate state for debouncing!!
                             state <= PLAY;
                         end
-                    
+
                 end
 			PLAY :
 				begin
@@ -61,44 +60,41 @@ module project(
 	        if (down_button)
 	            // if press, update block and move cat
 	            begin
-	            // do stuff
-	            
+	            // change color of selected block
+
+
 	            end
 
-
-
-	        
-
-	      // then check for win or loss and change to corresponding state
+	               // then check for win or loss and change to corresponding state
 
 
 	           end
 
 	    GAMEOVER :
 	      begin
-	      // show loss screen
-
-	      // move back to state "start"
-
+	         // show loss (red) screen
+           background <= 12'b1111_0000_0000;
+	         // move back to state "start"
+           state <= START;
 
 	      end
 
 
 	    GAMEWIN :
 	      begin
-	      // show win screen
-
-	      // move back to state "start"
-
+    	      // show win (green) screen
+            background <= 12'b0000_1111_0000;
+    	      // move back to state "start"
+            state <= START;
 
 	      end
 
 
 	endcase
 		end
-		
-		
-		assign bf11 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
+
+
+	assign bf11 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd35) && (vCount <= 10'd85)) ? 1 : 0;
 	assign bf12 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd95) && (vCount <= 10'd145)) ? 1 : 0;
 	assign bf13 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd155) && (vCount <= 10'd205)) ? 1 : 0;
 	assign bf14 = ((hCount >= 10'd222) && (hCount <= 10'd272)) && ((vCount >= 10'd215) && (vCount <= 10'd265)) ? 1 : 0;
@@ -162,16 +158,16 @@ module project(
 	assign bf86 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd335) && (vCount <= 10'd385)) ? 1 : 0;
 	assign bf87 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd395) && (vCount <= 10'd445)) ? 1 : 0;
 	assign bf88 = ((hCount >= 10'd642) && (hCount <= 10'd692)) && ((vCount >= 10'd455) && (vCount <= 10'd505)) ? 1 : 0;
-    
-    
-    assign hSync = (hCount < 96) ? 1:0;
+
+
+  assign hSync = (hCount < 96) ? 1:0;
 	assign vSync = (vCount < 2) ? 1:0;
-	
+
 	assign vgaR = rgb[11 : 8];
 	assign vgaG = rgb[7  : 4];
-	assign vgaB = rgb[3  : 0];	
-		
-		
+	assign vgaB = rgb[3  : 0];
+
+
 	always @ (*)
 		begin
 		if(~bright )	//force black if not inside the display area
@@ -306,11 +302,11 @@ module project(
 						rgb = WHITE;
 					else
 						rgb=WHITE;
-		
+
 		end
-		
 
 
 
-	
+
+
 endmodule
