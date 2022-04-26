@@ -155,8 +155,8 @@ set_property PACKAGE_PIN L6 [get_ports {Cg}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {Cg}]
 
 ##Bank = 34, Pin name = IO_L16P_T2_34,						Sch name = DP
-#set_property PACKAGE_PIN M4 [get_ports dp]							
-	#set_property IOSTANDARD LVCMOS33 [get_ports dp]
+#set_property PACKAGE_PIN M4 [get_ports Dp]							
+#set_property IOSTANDARD LVCMOS33 [get_ports Dp]
 
 #Bank = 34, Pin name = IO_L18N_T2_34,						Sch name = An0
 set_property PACKAGE_PIN N6 [get_ports {An0}]					

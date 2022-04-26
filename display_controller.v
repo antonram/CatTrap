@@ -36,7 +36,7 @@ module display_controller(
 			START :
 				begin
 					if(~bright )	//force black if not inside the display area
-						rgb = 12'b0000_0000_0000;
+						rgb = 12'b0000_0000_1111;
 					else if (bf11)
 						rgb = WHITE;
 					else if (bf12)
@@ -166,7 +166,7 @@ module display_controller(
 					else if (bf88)
 						rgb = WHITE;
 					else
-						rgb=background;
+						rgb=WHITE;
                     //Wait for button press
                   //if button press, go to state play and select first block
                     if (BtnC == 1)
