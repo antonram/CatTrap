@@ -245,6 +245,7 @@ module project(
 						rgb = color[board_map[1][7]];
 					else if (bf18)
 						rgb = color[board_map[1][8]];
+
 					else if (bf21)
 						rgb = color[board_map[2][1]];
 					else if (bf22)
@@ -261,6 +262,7 @@ module project(
 						rgb = color[board_map[2][7]];
 					else if (bf28)
 						rgb = color[board_map[2][8]];
+
 					else if (bf31)
 						rgb = color[board_map[3][1]];
 					else if (bf32)
@@ -277,6 +279,7 @@ module project(
 						rgb = color[board_map[3][7]];
 					else if (bf38)
 						rgb = color[board_map[3][8]];
+
 					else if (bf41)
 						rgb = color[board_map[4][1]];
 					else if (bf42)
@@ -284,7 +287,8 @@ module project(
 					else if (bf43)
 						rgb = color[board_map[4][3]];
 					else if (bf44) //could be randomly assigned as cat
-						rgb = color[board_map[4][4]]; //MAKE THIS ORANGE
+						board_map[4][4] = 2;
+						rgb = color[board_map[4][4]];
             cat_col = 4;
             cat_row = 4;
             cat_flag = 0;
@@ -296,6 +300,7 @@ module project(
 						rgb = color[board_map[4][7]];
 					else if (bf48)
 						rgb = color[board_map[4][8]];
+
 					else if (bf51)
 						rgb = color[board_map[5][1]];
 					else if (bf52)
@@ -312,6 +317,7 @@ module project(
 						rgb = color[board_map[5][7]];
 					else if (bf58)
 						rgb = color[board_map[5][8]];
+
 					else if (bf61)
 						rgb = color[board_map[6][1]];
 					else if (bf62)
@@ -328,6 +334,7 @@ module project(
 						rgb = color[board_map[6][7]];
 					else if (bf68)
 						rgb = color[board_map[6][8]];
+
 					else if (bf71)
 						rgb = color[board_map[7][1]];
 					else if (bf72)
@@ -344,6 +351,7 @@ module project(
 						rgb = color[board_map[7][7]];
 					else if (bf78)
 						rgb = color[board_map[7][8]];
+
 					else if (bf81)
 						rgb = color[board_map[8][1]];
 					else if (bf82)
@@ -360,6 +368,7 @@ module project(
 						rgb = color[board_map[8][7]];
 					else if (bf88)
 						rgb = color[board_map[8][8]];
+
 					else
 						rgb = WHITE;
 
