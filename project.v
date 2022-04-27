@@ -32,13 +32,12 @@ module project(
 	parameter GRAY = 12'b1000_1000_1000;
 	parameter ORANGE = 12'b1111_1000_0000;
 
-    localparam
+  localparam
     START = 5'b00001,
     PLAY	= 5'b00010,
     GAMEOVER = 5'b00100,
     GAMEWIN = 5'b01000;
 
-	//init grid w/ white squares and one center orange square for cat
 
 	initial
 		begin
@@ -52,6 +51,7 @@ module project(
 		if (Reset)
 			state <= START;
 
+			//init grid w/ white squares and one center orange square for cat
 			board_map [1][1] = 0;
 			board_map [1][2] = 0;
 			board_map [1][3] = 0;
@@ -79,7 +79,7 @@ module project(
 			board_map [4][1] = 0;
 			board_map [4][2] = 0;
 			board_map [4][3] = 0;
-			board_map [4][4] = 2;
+			board_map [4][4] = 2; //cat
 			board_map [4][5] = 0;
 			board_map [4][6] = 0;
 			board_map [4][7] = 0;
@@ -306,7 +306,7 @@ module project(
 	always @ (*)
 		begin
 		if(~bright )	//force black if not inside the display area
-						rgb = 12'b0000_0000_1111;
+						rgb = 12'b0000_0000_0000;
 					else if (bf11)
 						rgb = color[board_map[1][1]];
 					else if (bf12)
