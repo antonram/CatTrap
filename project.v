@@ -27,7 +27,7 @@ module project(
 	reg [11:0] color [0:2];
 	reg [1:0] cat_flag = 1;
 
-
+	//set color values
 	parameter WHITE = 12'b1111_1111_1111;
 	parameter GRAY = 12'b1000_1000_1000;
 	parameter ORANGE = 12'b1111_1000_0000;
@@ -60,6 +60,7 @@ module project(
 			board_map [1][6] = 0;
 			board_map [1][7] = 0;
 			board_map [1][8] = 0;
+
 			board_map [2][1] = 0;
 			board_map [2][2] = 0;
 			board_map [2][3] = 0;
@@ -68,6 +69,7 @@ module project(
 			board_map [2][6] = 0;
 			board_map [2][7] = 0;
 			board_map [2][8] = 0;
+
 			board_map [3][1] = 0;
 			board_map [3][2] = 0;
 			board_map [3][3] = 0;
@@ -76,6 +78,7 @@ module project(
 			board_map [3][6] = 0;
 			board_map [3][7] = 0;
 			board_map [3][8] = 0;
+
 			board_map [4][1] = 0;
 			board_map [4][2] = 0;
 			board_map [4][3] = 0;
@@ -84,6 +87,7 @@ module project(
 			board_map [4][6] = 0;
 			board_map [4][7] = 0;
 			board_map [4][8] = 0;
+
 			board_map [5][1] = 0;
 			board_map [5][2] = 0;
 			board_map [5][3] = 0;
@@ -92,6 +96,7 @@ module project(
 			board_map [5][6] = 0;
 			board_map [5][7] = 0;
 			board_map [5][8] = 0;
+
 			board_map [6][1] = 0;
 			board_map [6][2] = 0;
 			board_map [6][3] = 0;
@@ -100,6 +105,7 @@ module project(
 			board_map [6][6] = 0;
 			board_map [6][7] = 0;
 			board_map [6][8] = 0;
+
 			board_map [7][1] = 0;
 			board_map [7][2] = 0;
 			board_map [7][3] = 0;
@@ -108,6 +114,7 @@ module project(
 			board_map [7][6] = 0;
 			board_map [7][7] = 0;
 			board_map [7][8] = 0;
+
 			board_map [8][1] = 0;
 			board_map [8][2] = 0;
 			board_map [8][3] = 0;
