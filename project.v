@@ -79,7 +79,7 @@ module project(
 			board_map [4][1] = 0;
 			board_map [4][2] = 0;
 			board_map [4][3] = 0;
-			board_map [4][4] = 0;
+			board_map [4][4] = 2;
 			board_map [4][5] = 0;
 			board_map [4][6] = 0;
 			board_map [4][7] = 0;
@@ -365,13 +365,7 @@ module project(
 					else if (bf43)
 						rgb = color[board_map[4][3]];
 					else if (bf44) //assigned as cat
-						begin
-							board_map[4][4] = 2;
-							rgb = color[board_map[4][4]];
-	            cat_col = 4;
-	            cat_row = 4;
-	            cat_flag = 0;
-						end
+						rgb = color[board_map[4][4]];
 					else if (bf45)
 						rgb = color[board_map[4][5]];
 					else if (bf46)
