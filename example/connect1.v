@@ -1,18 +1,12 @@
 `timescale 1ns / 1ps
 
-module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, full_columns, q_start, q_p1_move, q_p1_place,
+module catTrap(Clk, Reset, Down_b, q_start, q_p1_move, q_p1_place,
 					q_p1_win, q_p2_move, q_p2_place, q_p2_win, hCount, vCount, rgb, bright);
 
-	input	Clk, Reset, Start_Ack, Left_b, Right_b, Down_b;
+	input	Clk, Reset, Start_Ack, Down_b;
 
 	reg btn_flag;
 
-
-	reg [2:0] column_count [0:6];
-
-	reg column_full [0:6];
-
-	output reg [2:0]  p1_pointer, full_columns;
 
 	integer i, j;
 
@@ -24,7 +18,16 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 	reg [1:0] board_map [0:5] [0:6];
 	output reg [11:0] rgb;
 	input bright;
-	wire [3:0] p1x, p2x, p1y, p2y, p1xM, p2xM, p1yM, p2yM;
+	
+	
+	reg [1:0] cat_flag = 1;
+	reg [3:0] block_col;
+  reg [3:0] block_row;
+	reg [2:0] cat_col;
+	reg [2:0] cat_row;
+	
+	
+	
 
 	localparam
 		START =    7'b1000000,
@@ -206,14 +209,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 		if(Reset)
 		begin
 			state <= START;
-			p1_pointer <= 3'bx;
-			for(i = 0; i < 7; i = i + 1)
-			begin
-				column_count[i] <= 3'bxxx;
-				column_full[i] <= 1'bx;
-			end
 
-			full_columns <= 3'bxxx;
 
 			//init grid w/ white squares and one center orange square for cat
 			board_map [0][1] = 1;
@@ -272,7 +268,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 				begin
 					//Wait for button press
 					//if button press, go to state play and select first block
-						if (down_button)
+						if (Down_b)
 							begin
 								 // add intermediate state for debouncing!!
 								 state <= PLAY;
@@ -282,7 +278,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 				PLAY:
 				begin
 				//Wait for press
-	        if (down_button)
+	        if (Down_b)
 	            // if press, update block and move cat
 	            begin
 	            // change color of selected block
@@ -355,7 +351,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 	         // show loss (red) screen
            background <= 12'b1111_0000_0000;
 	         // move back to state "start"
-           state <= START;
+           //state <= START;
 
 	      end
 
@@ -364,7 +360,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
     	      // show win (green) screen
             background <= 12'b0000_1111_0000;
     	      // move back to state "start"
-            state <= START;
+            //state <= START;
 
 	      end
 
