@@ -28,9 +28,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 
 	localparam
 		START =    7'b1000000,
-		P1MOVE =   7'b0100000,
-		P2MOVE =   7'b0010000,
-		P1PLACE =  7'b0001000,
+		PLAY =   7'b0100000,
+		GAMEOVER =   7'b0010000,
+		GAMEWIN =  7'b0001000,
 		P2PLACE =  7'b0000100,
 		P1WIN =    7'b0000010,
 		P2WIN =    7'b0000001;
@@ -155,53 +155,53 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 	
 	assign inbound = ((hCount >= 190)&&(hCount <= 550)&&(vCount >= 140)&&(vCount <= 450));
 	
-	assign box00 = ((hCount >= 200)&&(hCount <= 240)&&(vCount >= 150)&&(vCount <= 190));
-	assign box01 = ((hCount >= 250)&&(hCount <= 290)&&(vCount >= 150)&&(vCount <= 190));
-	assign box02 = ((hCount >= 300)&&(hCount <= 340)&&(vCount >= 150)&&(vCount <= 190));
-	assign box03 = ((hCount >= 350)&&(hCount <= 390)&&(vCount >= 150)&&(vCount <= 190));
-	assign box04 = ((hCount >= 400)&&(hCount <= 440)&&(vCount >= 150)&&(vCount <= 190));
-	assign box05 = ((hCount >= 450)&&(hCount <= 490)&&(vCount >= 150)&&(vCount <= 190));
-	assign box06 = ((hCount >= 500)&&(hCount <= 540)&&(vCount >= 150)&&(vCount <= 190));
+	assign box00 = ((hCount >= 200)&&(hCount <= 250)&&(vCount >= 150)&&(vCount <= 200));
+	assign box01 = ((hCount >= 250)&&(hCount <= 300)&&(vCount >= 150)&&(vCount <= 200));
+	assign box02 = ((hCount >= 300)&&(hCount <= 350)&&(vCount >= 150)&&(vCount <= 200));
+	assign box03 = ((hCount >= 350)&&(hCount <= 400)&&(vCount >= 150)&&(vCount <= 200));
+	assign box04 = ((hCount >= 400)&&(hCount <= 450)&&(vCount >= 150)&&(vCount <= 200));
+	assign box05 = ((hCount >= 450)&&(hCount <= 500)&&(vCount >= 150)&&(vCount <= 200));
+	assign box06 = ((hCount >= 500)&&(hCount <= 550)&&(vCount >= 150)&&(vCount <= 200));
 	
-	assign box10 = ((hCount >= 200)&&(hCount <= 240)&&(vCount >= 200)&&(vCount <= 240));
-	assign box11 = ((hCount >= 250)&&(hCount <= 290)&&(vCount >= 200)&&(vCount <= 240));
-	assign box12 = ((hCount >= 300)&&(hCount <= 340)&&(vCount >= 200)&&(vCount <= 240));
-	assign box13 = ((hCount >= 350)&&(hCount <= 390)&&(vCount >= 200)&&(vCount <= 240));
-	assign box14 = ((hCount >= 400)&&(hCount <= 440)&&(vCount >= 200)&&(vCount <= 240));
-	assign box15 = ((hCount >= 450)&&(hCount <= 490)&&(vCount >= 200)&&(vCount <= 240));
-	assign box16 = ((hCount >= 500)&&(hCount <= 540)&&(vCount >= 200)&&(vCount <= 240));
+	assign box10 = ((hCount >= 200)&&(hCount <= 250)&&(vCount >= 200)&&(vCount <= 250));
+	assign box11 = ((hCount >= 250)&&(hCount <= 300)&&(vCount >= 200)&&(vCount <= 250));
+	assign box12 = ((hCount >= 300)&&(hCount <= 350)&&(vCount >= 200)&&(vCount <= 250));
+	assign box13 = ((hCount >= 350)&&(hCount <= 400)&&(vCount >= 200)&&(vCount <= 250));
+	assign box14 = ((hCount >= 400)&&(hCount <= 450)&&(vCount >= 200)&&(vCount <= 250));
+	assign box15 = ((hCount >= 450)&&(hCount <= 500)&&(vCount >= 200)&&(vCount <= 250));
+	assign box16 = ((hCount >= 500)&&(hCount <= 550)&&(vCount >= 200)&&(vCount <= 250));
 	
-	assign box20 = ((hCount >= 200)&&(hCount <= 240)&&(vCount >= 250)&&(vCount <= 290));
-	assign box21 = ((hCount >= 250)&&(hCount <= 290)&&(vCount >= 250)&&(vCount <= 290));
-	assign box22 = ((hCount >= 300)&&(hCount <= 340)&&(vCount >= 250)&&(vCount <= 290));
-	assign box23 = ((hCount >= 350)&&(hCount <= 390)&&(vCount >= 250)&&(vCount <= 290));
-	assign box24 = ((hCount >= 400)&&(hCount <= 440)&&(vCount >= 250)&&(vCount <= 290));
-	assign box25 = ((hCount >= 450)&&(hCount <= 490)&&(vCount >= 250)&&(vCount <= 290));
-	assign box26 = ((hCount >= 500)&&(hCount <= 540)&&(vCount >= 250)&&(vCount <= 290));
+	assign box20 = ((hCount >= 200)&&(hCount <= 250)&&(vCount >= 250)&&(vCount <= 300));
+	assign box21 = ((hCount >= 250)&&(hCount <= 300)&&(vCount >= 250)&&(vCount <= 300));
+	assign box22 = ((hCount >= 300)&&(hCount <= 350)&&(vCount >= 250)&&(vCount <= 300));
+	assign box23 = ((hCount >= 350)&&(hCount <= 400)&&(vCount >= 250)&&(vCount <= 300));
+	assign box24 = ((hCount >= 400)&&(hCount <= 450)&&(vCount >= 250)&&(vCount <= 300));
+	assign box25 = ((hCount >= 450)&&(hCount <= 500)&&(vCount >= 250)&&(vCount <= 300));
+	assign box26 = ((hCount >= 500)&&(hCount <= 550)&&(vCount >= 250)&&(vCount <= 300));
 	
-	assign box30 = ((hCount >= 200)&&(hCount <= 240)&&(vCount >= 300)&&(vCount <= 340));
-	assign box31 = ((hCount >= 250)&&(hCount <= 290)&&(vCount >= 300)&&(vCount <= 340));
-	assign box32 = ((hCount >= 300)&&(hCount <= 340)&&(vCount >= 300)&&(vCount <= 340));
-	assign box33 = ((hCount >= 350)&&(hCount <= 390)&&(vCount >= 300)&&(vCount <= 340));
-	assign box34 = ((hCount >= 400)&&(hCount <= 440)&&(vCount >= 300)&&(vCount <= 340));
-	assign box35 = ((hCount >= 450)&&(hCount <= 490)&&(vCount >= 300)&&(vCount <= 340));
-	assign box36 = ((hCount >= 500)&&(hCount <= 540)&&(vCount >= 300)&&(vCount <= 340));
+	assign box30 = ((hCount >= 200)&&(hCount <= 250)&&(vCount >= 300)&&(vCount <= 350));
+	assign box31 = ((hCount >= 250)&&(hCount <= 300)&&(vCount >= 300)&&(vCount <= 350));
+	assign box32 = ((hCount >= 300)&&(hCount <= 350)&&(vCount >= 300)&&(vCount <= 350));
+	assign box33 = ((hCount >= 350)&&(hCount <= 400)&&(vCount >= 300)&&(vCount <= 350));
+	assign box34 = ((hCount >= 400)&&(hCount <= 450)&&(vCount >= 300)&&(vCount <= 350));
+	assign box35 = ((hCount >= 450)&&(hCount <= 500)&&(vCount >= 300)&&(vCount <= 350));
+	assign box36 = ((hCount >= 500)&&(hCount <= 550)&&(vCount >= 300)&&(vCount <= 350));
 	
-	assign box40 = ((hCount >= 200)&&(hCount <= 240)&&(vCount >= 350)&&(vCount <= 390));
-	assign box41 = ((hCount >= 250)&&(hCount <= 290)&&(vCount >= 350)&&(vCount <= 390));
-	assign box42 = ((hCount >= 300)&&(hCount <= 340)&&(vCount >= 350)&&(vCount <= 390));
-	assign box43 = ((hCount >= 350)&&(hCount <= 390)&&(vCount >= 350)&&(vCount <= 390));
-	assign box44 = ((hCount >= 400)&&(hCount <= 440)&&(vCount >= 350)&&(vCount <= 390));
-	assign box45 = ((hCount >= 450)&&(hCount <= 490)&&(vCount >= 350)&&(vCount <= 390));
-	assign box46 = ((hCount >= 500)&&(hCount <= 540)&&(vCount >= 350)&&(vCount <= 390));
+	assign box40 = ((hCount >= 200)&&(hCount <= 250)&&(vCount >= 350)&&(vCount <= 400));
+	assign box41 = ((hCount >= 250)&&(hCount <= 300)&&(vCount >= 350)&&(vCount <= 400));
+	assign box42 = ((hCount >= 300)&&(hCount <= 350)&&(vCount >= 350)&&(vCount <= 400));
+	assign box43 = ((hCount >= 350)&&(hCount <= 400)&&(vCount >= 350)&&(vCount <= 400));
+	assign box44 = ((hCount >= 400)&&(hCount <= 450)&&(vCount >= 350)&&(vCount <= 400));
+	assign box45 = ((hCount >= 450)&&(hCount <= 500)&&(vCount >= 350)&&(vCount <= 400));
+	assign box46 = ((hCount >= 500)&&(hCount <= 550)&&(vCount >= 350)&&(vCount <= 400));
 	
-	assign box50 = ((hCount >= 200)&&(hCount <= 240)&&(vCount >= 400)&&(vCount <= 440));
-	assign box51 = ((hCount >= 250)&&(hCount <= 290)&&(vCount >= 400)&&(vCount <= 440));
-	assign box52 = ((hCount >= 300)&&(hCount <= 340)&&(vCount >= 400)&&(vCount <= 440));
-	assign box53 = ((hCount >= 350)&&(hCount <= 390)&&(vCount >= 400)&&(vCount <= 440));
-	assign box54 = ((hCount >= 400)&&(hCount <= 440)&&(vCount >= 400)&&(vCount <= 440));
-	assign box55 = ((hCount >= 450)&&(hCount <= 490)&&(vCount >= 400)&&(vCount <= 440));
-	assign box56 = ((hCount >= 500)&&(hCount <= 540)&&(vCount >= 400)&&(vCount <= 440));
+	assign box50 = ((hCount >= 200)&&(hCount <= 250)&&(vCount >= 400)&&(vCount <= 450));
+	assign box51 = ((hCount >= 250)&&(hCount <= 300)&&(vCount >= 400)&&(vCount <= 450));
+	assign box52 = ((hCount >= 300)&&(hCount <= 350)&&(vCount >= 400)&&(vCount <= 450));
+	assign box53 = ((hCount >= 350)&&(hCount <= 400)&&(vCount >= 400)&&(vCount <= 450));
+	assign box54 = ((hCount >= 400)&&(hCount <= 450)&&(vCount >= 400)&&(vCount <= 450));
+	assign box55 = ((hCount >= 450)&&(hCount <= 500)&&(vCount >= 400)&&(vCount <= 450));
+	assign box56 = ((hCount >= 500)&&(hCount <= 550)&&(vCount >= 400)&&(vCount <= 450));
 	
 	always @ (posedge Clk, posedge Reset)
 	begin
@@ -216,6 +216,57 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 			end
 			
 			full_columns <= 3'bxxx;
+			
+			//init grid w/ white squares and one center orange square for cat
+			board_map [0][1] = 1;
+			board_map [0][2] = 0;
+			board_map [0][3] = 1;
+			board_map [0][4] = 0;
+			board_map [0][5] = 1;
+			board_map [0][6] = 0;
+			
+			board_map [1][1] = 0;
+			board_map [1][2] = 1;
+			board_map [1][3] = 0;
+			board_map [1][4] = 1;
+			board_map [1][5] = 0;
+			board_map [1][6] = 1;
+			
+
+			board_map [2][1] = 1;
+			board_map [2][2] = 0;
+			board_map [2][3] = 1;
+			board_map [2][4] = 0;
+			board_map [2][5] = 1;
+			board_map [2][6] = 0;
+		
+
+			board_map [3][1] = 0;
+			board_map [3][2] = 1;
+			board_map [3][3] = 0;
+			board_map [3][4] = 1;
+			board_map [3][5] = 0;
+			board_map [3][6] = 1;
+			board_map [3][7] = 0;
+			board_map [3][8] = 1;
+
+			board_map [4][1] = 1;
+			board_map [4][2] = 0;
+			board_map [4][3] = 1;
+			board_map [4][4] = 2; //cat
+			board_map [4][5] = 1;
+			board_map [4][6] = 0;
+			
+
+			board_map [5][1] = 0;
+			board_map [5][2] = 1;
+			board_map [5][3] = 0;
+			board_map [5][4] = 1;
+			board_map [5][5] = 0;
+			board_map [5][6] = 1;
+
+			
+			
 		end
 		else
 		begin
@@ -223,7 +274,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 				START:
 				begin
 					//nsl
-					if(Start_Ack) state <= P1MOVE;
+					if(Start_Ack) state <= PLAY;
 					
 					//dpu
 					p1_pointer <= 3'b011;
@@ -244,11 +295,11 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					end
 					
 				end
-				P1MOVE:
+				PLAY:
 				begin
 					//nsl
 					if(Down_b && (full_columns < 7))
-						state <= P1PLACE;
+						state <= GAMEWIN;
 						
 					if(full_columns == 7)
 						state <= START;
@@ -312,7 +363,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					if(!Right_b && !Left_b)
 						btn_flag <= 0;
 				end
-				P2MOVE:
+				GAMEOVER:
 				begin
 				//nsl
 					if(Down_b && (full_columns < 7))
@@ -381,13 +432,13 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 						btn_flag <= 0;
 					
 				end
-				P1PLACE:
+				GAMEWIN:
 				begin
 					//nsl
  					if(!Down_b && column_full[p1_pointer])
-						state <= P1MOVE;
+						state <= PLAY;
 					if(!Down_b && !column_full[p1_pointer])
-						state <= P2MOVE; 
+						state <= GAMEOVER; 
 					
 					
 					//dpu
@@ -415,9 +466,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 				begin
 					//nsl
  					if(!Down_b && column_full[p1_pointer])
-						state <= P2MOVE;
+						state <= GAMEOVER;
 					if(!Down_b && !column_full[p1_pointer])
-						state <= P1MOVE; 
+						state <= PLAY; 
 						
 					//dpu
 					
