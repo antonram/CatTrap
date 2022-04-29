@@ -21,7 +21,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 	assign {q_start, q_p1_move, q_p2_move, q_p1_place, q_p2_place, q_p1_win, q_p2_win} = state;
 	
 	input [9:0] hCount, vCount;
-	reg [1:0] game_board [0:5] [0:6];
+	reg [1:0] board_map [0:5] [0:6];
 	output reg [11:0] rgb;
 	input bright;
 	wire [3:0] p1x, p2x, p1y, p2y, p1xM, p2xM, p1yM, p2yM;
@@ -58,89 +58,89 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 		else if (inbound) 
 		begin
 			if(box00)
-				rgb = color[game_board[5][0]];
+				rgb = color[board_map[5][0]];
 			else if (box01) 
-				rgb = color[game_board[5][1]];
+				rgb = color[board_map[5][1]];
 			else if (box02) 
-				rgb = color[game_board[5][2]];
+				rgb = color[board_map[5][2]];
 			else if (box03) 
-				rgb = color[game_board[5][3]];
+				rgb = color[board_map[5][3]];
 			else if (box04) 
-				rgb = color[game_board[5][4]];
+				rgb = color[board_map[5][4]];
 			else if (box05) 
-				rgb = color[game_board[5][5]];
+				rgb = color[board_map[5][5]];
 			else if (box06) 
-				rgb = color[game_board[5][6]];
+				rgb = color[board_map[5][6]];
 			else if (box10) 
-				rgb = color[game_board[4][0]];
+				rgb = color[board_map[4][0]];
 			else if (box11) 
-				rgb = color[game_board[4][1]];
+				rgb = color[board_map[4][1]];
 			else if (box12) 
-				rgb = color[game_board[4][2]];
+				rgb = color[board_map[4][2]];
 			else if (box13) 
-				rgb = color[game_board[4][3]];
+				rgb = color[board_map[4][3]];
 			else if (box14) 
-				rgb = color[game_board[4][4]];
+				rgb = color[board_map[4][4]];
 			else if (box15) 
-				rgb = color[game_board[4][5]];
+				rgb = color[board_map[4][5]];
 			else if (box16) 
-				rgb = color[game_board[4][6]];
+				rgb = color[board_map[4][6]];
 			else if (box20) 
-				rgb = color[game_board[3][0]];
+				rgb = color[board_map[3][0]];
 			else if (box21) 
-				rgb = color[game_board[3][1]];
+				rgb = color[board_map[3][1]];
 			else if (box22) 
-				rgb = color[game_board[3][2]];
+				rgb = color[board_map[3][2]];
 			else if (box23) 
-				rgb = color[game_board[3][3]];
+				rgb = color[board_map[3][3]];
 			else if (box24) 
-				rgb = color[game_board[3][4]];
+				rgb = color[board_map[3][4]];
 			else if (box25) 
-				rgb = color[game_board[3][5]];
+				rgb = color[board_map[3][5]];
 			else if (box26) 
-				rgb = color[game_board[3][6]];
+				rgb = color[board_map[3][6]];
 			else if (box30) 
-				rgb = color[game_board[2][0]];
+				rgb = color[board_map[2][0]];
 			else if (box31) 
-				rgb = color[game_board[2][1]];
+				rgb = color[board_map[2][1]];
 			else if (box32) 
-				rgb = color[game_board[2][2]];
+				rgb = color[board_map[2][2]];
 			else if (box33) 
-				rgb = color[game_board[2][3]];
+				rgb = color[board_map[2][3]];
 			else if (box34) 
-				rgb = color[game_board[2][4]];
+				rgb = color[board_map[2][4]];
 			else if (box35) 
-				rgb = color[game_board[2][5]];
+				rgb = color[board_map[2][5]];
 			else if (box36) 
-				rgb = color[game_board[2][6]];
+				rgb = color[board_map[2][6]];
 			else if (box40) 
-				rgb = color[game_board[1][0]];
+				rgb = color[board_map[1][0]];
 			else if (box41) 
-				rgb = color[game_board[1][1]];
+				rgb = color[board_map[1][1]];
 			else if (box42) 
-				rgb = color[game_board[1][2]];
+				rgb = color[board_map[1][2]];
 			else if (box43) 
-				rgb = color[game_board[1][3]];
+				rgb = color[board_map[1][3]];
 			else if (box44) 
-				rgb = color[game_board[1][4]];
+				rgb = color[board_map[1][4]];
 			else if (box45) 
-				rgb = color[game_board[1][5]];
+				rgb = color[board_map[1][5]];
 			else if (box46) 
-				rgb = color[game_board[1][6]];
+				rgb = color[board_map[1][6]];
 			else if (box50) 
-				rgb = color[game_board[0][0]];
+				rgb = color[board_map[0][0]];
 			else if (box51) 
-				rgb = color[game_board[0][1]];
+				rgb = color[board_map[0][1]];
 			else if (box52) 
-				rgb = color[game_board[0][2]];
+				rgb = color[board_map[0][2]];
 			else if (box53) 
-				rgb = color[game_board[0][3]];
+				rgb = color[board_map[0][3]];
 			else if (box54) 
-				rgb = color[game_board[0][4]];
+				rgb = color[board_map[0][4]];
 			else if (box55) 
-				rgb = color[game_board[0][5]];
+				rgb = color[board_map[0][5]];
 			else if (box56) 
-				rgb = color[game_board[0][6]];
+				rgb = color[board_map[0][6]];
 			else
 				rgb = 12'b0000_0111_1111;
 		end
@@ -290,7 +290,7 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					begin
 						for(j = 0; j < 6; j = j+1)
 						begin
-							game_board[j][i] = 2'b00;
+							board_map[j][i] = 2'b00;
 						end
 					end
 					
@@ -308,9 +308,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 0; i < 6; i = i + 1)
 						for (j = 0; j < 4; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i][j+1] == 2'b01 && game_board[i][j+2] == 2'b01 && game_board[i][j+3] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i][j+1] == 2'b01 && board_map[i][j+2] == 2'b01 && board_map[i][j+3] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i][j+1] == 2'b10 && game_board[i][j+2] == 2'b10 && game_board[i][j+3] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i][j+1] == 2'b10 && board_map[i][j+2] == 2'b10 && board_map[i][j+3] == 2'b10)
 								state <= P2WIN;
 						end
 					
@@ -318,9 +318,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 0; i < 3; i = i + 1)
 						for (j = 0; j < 7; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i+1][j] == 2'b01 && game_board[i+2][j] == 2'b01 && game_board[i+3][j] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i+1][j] == 2'b01 && board_map[i+2][j] == 2'b01 && board_map[i+3][j] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i+1][j] == 2'b10 && game_board[i+2][j] == 2'b10 && game_board[i+3][j] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i+1][j] == 2'b10 && board_map[i+2][j] == 2'b10 && board_map[i+3][j] == 2'b10)
 								state <= P2WIN;
 						end
 						
@@ -328,9 +328,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 0; i < 3; i = i + 1)
 						for (j = 0; j < 4; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i+1][j+1] == 2'b01 && game_board[i+2][j+2] == 2'b01 && game_board[i+3][j+3] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i+1][j+1] == 2'b01 && board_map[i+2][j+2] == 2'b01 && board_map[i+3][j+3] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i+1][j+1] == 2'b10 && game_board[i+2][j+2] == 2'b10 && game_board[i+3][j+3] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i+1][j+1] == 2'b10 && board_map[i+2][j+2] == 2'b10 && board_map[i+3][j+3] == 2'b10)
 								state <= P2WIN;
 						end
 					
@@ -338,9 +338,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 3; i < 6; i = i + 1)
 						for (j = 0; j < 4; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i-1][j+1] == 2'b01 && game_board[i-2][j+2] == 2'b01 && game_board[i-3][j+3] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i-1][j+1] == 2'b01 && board_map[i-2][j+2] == 2'b01 && board_map[i-3][j+3] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i-1][j+1] == 2'b10 && game_board[i-2][j+2] == 2'b10 && game_board[i-3][j+3] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i-1][j+1] == 2'b10 && board_map[i-2][j+2] == 2'b10 && board_map[i-3][j+3] == 2'b10)
 								state <= P2WIN;
 						end
 					
@@ -376,9 +376,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 0; i < 6; i = i + 1)
 						for (j = 0; j < 4; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i][j+1] == 2'b01 && game_board[i][j+2] == 2'b01 && game_board[i][j+3] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i][j+1] == 2'b01 && board_map[i][j+2] == 2'b01 && board_map[i][j+3] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i][j+1] == 2'b10 && game_board[i][j+2] == 2'b10 && game_board[i][j+3] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i][j+1] == 2'b10 && board_map[i][j+2] == 2'b10 && board_map[i][j+3] == 2'b10)
 								state <= P2WIN;
 						end
 					
@@ -386,9 +386,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 0; i < 3; i = i + 1)
 						for (j = 0; j < 7; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i+1][j] == 2'b01 && game_board[i+2][j] == 2'b01 && game_board[i+3][j] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i+1][j] == 2'b01 && board_map[i+2][j] == 2'b01 && board_map[i+3][j] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i+1][j] == 2'b10 && game_board[i+2][j] == 2'b10 && game_board[i+3][j] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i+1][j] == 2'b10 && board_map[i+2][j] == 2'b10 && board_map[i+3][j] == 2'b10)
 								state <= P2WIN;
 						end
 						
@@ -396,9 +396,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 0; i < 3; i = i + 1)
 						for (j = 0; j < 4; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i+1][j+1] == 2'b01 && game_board[i+2][j+2] == 2'b01 && game_board[i+3][j+3] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i+1][j+1] == 2'b01 && board_map[i+2][j+2] == 2'b01 && board_map[i+3][j+3] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i+1][j+1] == 2'b10 && game_board[i+2][j+2] == 2'b10 && game_board[i+3][j+3] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i+1][j+1] == 2'b10 && board_map[i+2][j+2] == 2'b10 && board_map[i+3][j+3] == 2'b10)
 								state <= P2WIN;
 						end
 					
@@ -406,9 +406,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					for (i = 3; i < 6; i = i + 1)
 						for (j = 0; j < 4; j = j + 1)
 						begin
-							if (game_board[i][j] == 2'b01 && game_board[i-1][j+1] == 2'b01 && game_board[i-2][j+2] == 2'b01 && game_board[i-3][j+3] == 2'b01)
+							if (board_map[i][j] == 2'b01 && board_map[i-1][j+1] == 2'b01 && board_map[i-2][j+2] == 2'b01 && board_map[i-3][j+3] == 2'b01)
 								state <= P1WIN;
-							else if (game_board[i][j] == 2'b10 && game_board[i-1][j+1] == 2'b10 && game_board[i-2][j+2] == 2'b10 && game_board[i-3][j+3] == 2'b10)
+							else if (board_map[i][j] == 2'b10 && board_map[i-1][j+1] == 2'b10 && board_map[i-2][j+2] == 2'b10 && board_map[i-3][j+3] == 2'b10)
 								state <= P2WIN;
 						end
 						
@@ -448,9 +448,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 						
 					if(!Down_b && !column_full[p1_pointer])
 					begin
-						if(game_board[column_count[p1_pointer]][p1_pointer] == 2'b00)
+						if(board_map[column_count[p1_pointer]][p1_pointer] == 2'b00)
 						begin
-							game_board[column_count[p1_pointer]][p1_pointer] <= 2'b01;
+							board_map[column_count[p1_pointer]][p1_pointer] <= 2'b01;
 						
 							column_count[p1_pointer] <= column_count[p1_pointer] + 1;
 							if(column_count[p1_pointer] == 5)
@@ -477,9 +477,9 @@ module connect_4(Clk, Reset, Start_Ack, Left_b, Right_b, Down_b, p1_pointer, ful
 					
 					if(!Down_b && !column_full[p1_pointer])
 					begin
-						if(game_board[column_count[p1_pointer]][p1_pointer] == 2'b00)
+						if(board_map[column_count[p1_pointer]][p1_pointer] == 2'b00)
 						begin
-							game_board[column_count[p1_pointer]][p1_pointer] <= 2'b10;
+							board_map[column_count[p1_pointer]][p1_pointer] <= 2'b10;
 						
 							column_count[p1_pointer] <= column_count[p1_pointer] + 1;
 							if(column_count[p1_pointer] == 5)
