@@ -3,10 +3,11 @@
 module project(
 	input clk, //this clock must be a slow enough clock to view the changing positions of the objects
 	input bright,
+	input Reset,
 	input [9:0] hCount,
 	input [9:0] vCount,
-    input BtnC,
-    input BtnD,
+  input BtnC,
+  input BtnD,
 	output reg [11:0] rgb,
 	output reg [11:0] background,
 	input [7:0] Row,
@@ -26,17 +27,17 @@ module project(
 	reg [11:0] color [0:2];
 	reg [1:0] cat_flag = 1;
 
+	//set color values
 	parameter WHITE = 12'b1111_1111_1111;
 	parameter GRAY = 12'b1000_1000_1000;
 	parameter ORANGE = 12'b1111_1000_0000;
 
-    localparam
+  localparam
     START = 5'b00001,
     PLAY	= 5'b00010,
     GAMEOVER = 5'b00100,
     GAMEWIN = 5'b01000;
 
-	//init grid w/ white squares and one random center orange square for cat
 
 	initial
 		begin
@@ -45,9 +46,83 @@ module project(
 			color[2] = ORANGE;
 		end
 
-
 	always @(posedge clk)
 		begin
+		if (Reset)
+			state <= START;
+
+			//init grid w/ white squares and one center orange square for cat
+			board_map [1][1] = 0;
+			board_map [1][2] = 0;
+			board_map [1][3] = 0;
+			board_map [1][4] = 0;
+			board_map [1][5] = 0;
+			board_map [1][6] = 0;
+			board_map [1][7] = 0;
+			board_map [1][8] = 0;
+
+			board_map [2][1] = 0;
+			board_map [2][2] = 0;
+			board_map [2][3] = 0;
+			board_map [2][4] = 0;
+			board_map [2][5] = 0;
+			board_map [2][6] = 0;
+			board_map [2][7] = 0;
+			board_map [2][8] = 0;
+
+			board_map [3][1] = 0;
+			board_map [3][2] = 0;
+			board_map [3][3] = 0;
+			board_map [3][4] = 0;
+			board_map [3][5] = 0;
+			board_map [3][6] = 0;
+			board_map [3][7] = 0;
+			board_map [3][8] = 0;
+
+			board_map [4][1] = 0;
+			board_map [4][2] = 0;
+			board_map [4][3] = 0;
+			board_map [4][4] = 2; //cat
+			board_map [4][5] = 0;
+			board_map [4][6] = 0;
+			board_map [4][7] = 0;
+			board_map [4][8] = 0;
+
+			board_map [5][1] = 0;
+			board_map [5][2] = 0;
+			board_map [5][3] = 0;
+			board_map [5][4] = 0;
+			board_map [5][5] = 0;
+			board_map [5][6] = 0;
+			board_map [5][7] = 0;
+			board_map [5][8] = 0;
+
+			board_map [6][1] = 0;
+			board_map [6][2] = 0;
+			board_map [6][3] = 0;
+			board_map [6][4] = 0;
+			board_map [6][5] = 0;
+			board_map [6][6] = 0;
+			board_map [6][7] = 0;
+			board_map [6][8] = 0;
+
+			board_map [7][1] = 0;
+			board_map [7][2] = 0;
+			board_map [7][3] = 0;
+			board_map [7][4] = 0;
+			board_map [7][5] = 0;
+			board_map [7][6] = 0;
+			board_map [7][7] = 0;
+			board_map [7][8] = 0;
+
+			board_map [8][1] = 0;
+			board_map [8][2] = 0;
+			board_map [8][3] = 0;
+			board_map [8][4] = 0;
+			board_map [8][5] = 0;
+			board_map [8][6] = 0;
+			board_map [8][7] = 0;
+			board_map [8][8] = 0;
 
 		case(state)
 			START :
@@ -74,8 +149,10 @@ module project(
                     cat_flag = 1;
 
               //if block next to cat is not GRAY change new block to ORANGE and old block to white
+
                     if ((board_map[cat_row+1][cat_col] != 1)&&(cat_flag==1))
                       begin
+												//move cat to new available block (change to ORANGE)
                         board_map[cat_row+1][cat_col] = 2;
                         //change old block to WHITE
                         board_map[cat_row][cat_col] = 0;
@@ -83,9 +160,11 @@ module project(
                         cat_row = cat_row + 1;
                         cat_flag = 0;
                       end
+
                     //if block below cat is not GRAY and cat has not been moved yet move cat to that block
                     else if ((board_map[cat_row-1][cat_col] != 1)&&(cat_flag==1))
                       begin
+												//move cat to new available block (change to ORANGE)
                         board_map[cat_row-1][cat_col] = 2;
                         //change old block to WHITE
                         board_map[cat_row][cat_col] = 0;
@@ -93,9 +172,11 @@ module project(
                         cat_row = cat_row - 1;
                         cat_flag = 0;
                       end
+
                     //if block to right of cat is not GRAY and cat has not been moved yet move cat to that block
                     else if ((board_map[cat_row][cat_col+1] != 1)&&(cat_flag==1))
                       begin
+												//move cat to new available block (change to ORANGE)
                         board_map[cat_row][cat_col+1] = 2;
                         //change old block to WHITE
                         board_map[cat_row][cat_col] = 0;
@@ -103,9 +184,11 @@ module project(
                         cat_col = cat_col + 1;
                         cat_flag = 0;
                       end
+
                     //if block to left of cat is not GRAY and cat has not been moved yet move cat to that block
                     else if ((board_map[cat_row][cat_col-1] != 1)&&(cat_flag==1))
                       begin
+												//move cat to new available block (change to ORANGE)
                         board_map[cat_row][cat_col-1] = 2;
                         //change old block to WHITE
                         board_map[cat_row][cat_col] = 0;
@@ -113,13 +196,15 @@ module project(
                         cat_col = cat_col - 1;
                         cat_flag = 0;
                       end
+
                     else
                       state <= GAMEWIN;
 
 	            end
 
 	               // then check for win or loss and change to corresponding state
-
+								 if ((cat_row > 8)||(cat_col > 8)||(cat_col < 1)||(cat_row < 1))
+									 state <= GAMEOVER;
 
 	           end
 
@@ -228,7 +313,7 @@ module project(
 	always @ (*)
 		begin
 		if(~bright )	//force black if not inside the display area
-						rgb = 12'b0000_0000_1111;
+						rgb = 12'b0000_0000_0000;
 					else if (bf11)
 						rgb = color[board_map[1][1]];
 					else if (bf12)
@@ -286,15 +371,9 @@ module project(
 						rgb = color[board_map[4][2]];
 					else if (bf43)
 						rgb = color[board_map[4][3]];
-					else if (bf44) //could be randomly assigned as cat
-						begin
-							board_map[4][4] = 2;
-							rgb = color[board_map[4][4]];
-	            cat_col = 4;
-	            cat_row = 4;
-	            cat_flag = 0;
-						end
-					else if (bf45) //could be randomly assigned as cat
+					else if (bf44) //assigned as cat
+						rgb = color[board_map[4][4]];
+					else if (bf45)
 						rgb = color[board_map[4][5]];
 					else if (bf46)
 						rgb = color[board_map[4][6]];
@@ -309,9 +388,9 @@ module project(
 						rgb = color[board_map[5][2]];
 					else if (bf53)
 						rgb = color[board_map[5][3]];
-					else if (bf54) //could be randomly assigned as cat
+					else if (bf54)
 						rgb = color[board_map[5][4]];
-					else if (bf55) //could be randomly assigned as cat
+					else if (bf55)
 						rgb = color[board_map[5][5]];
 					else if (bf56)
 						rgb = color[board_map[5][6]];

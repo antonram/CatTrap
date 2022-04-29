@@ -10,6 +10,7 @@ Ca, Cb, Cc, Cd, Ce, Cf, Cg, vgaR, vgaG, vgaB,  hSync, vSync
 
 );
 
+
 input clk;
 input BtnC, BtnD;
 input    Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7;
@@ -71,7 +72,7 @@ wire [11:0] background;
 wire [11:0] rgb;
 
 
-project sc(.clk(clk), .Row(Row), .Col(Col),
+project sc(.clk(clk), .Row(Row), .Col(Col), .Reset(Reset),
 .bright(bright), .hCount(hc),
 .vCount(vc), .BtnC(BtnC), .BtnD(BtnD), .rgb(rgb), .background(background),
 .center_button(center_button), .down_button(down_button));
