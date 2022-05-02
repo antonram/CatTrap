@@ -44,7 +44,6 @@ module vga_top(
 	
 	wire bright;
 	wire[9:0] hc, vc;
-	wire[15:0] score;
 	wire [3:0] anode;
 	wire [11:0] rgb;
 	wire [11:0] background;
@@ -68,16 +67,6 @@ module vga_top(
 /* 	wire [11:0] column0, column1, column2, column3, 
 					column4, column5, column6; */
 					
-	wire [2:0] p1_pointer, 
-					full_columns;
-					
-	wire q_start;
-	wire q_p1_move;
-	wire q_p1_place;
-	wire q_p1_win;
-	wire q_p2_move;
-	wire q_p2_place;
-	wire q_p2_win;
 	
 	ee354_debouncer #(.N_dc(25)) B_Down(.CLK(ClkPort), 
 						.RESET(Reset), 
@@ -91,19 +80,12 @@ module vga_top(
 	catTrap sc(.Clk(ClkPort), 
 					.Reset(Reset),  
 					.Down_b(Down_b), 
-					.p1_pointer(p1_pointer), 
-					.full_columns(full_columns), 
-					.q_start(q_start), 
-					.q_p1_move(q_p1_move), 
-					.q_p1_place(q_p1_place), 
-					.q_p1_win(q_p1_win),
-					.q_p2_move(q_p2_move), 
-					.q_p2_place(q_p2_place),
-					.q_p2_win(q_p2_win),
 					.hCount(hc), 
 					.vCount(vc), 
 					.rgb(rgb),
-					.bright(bright)
+					.bright(bright),
+					.Block_col(Col),
+					.Block_row(Row)
 					);
 
 
@@ -123,7 +105,7 @@ module vga_top(
 	//SSDs display 
 	//to show how we can interface our "game" module with the SSD's, we output the 12-bit rgb background value to the SSD's
 	
-	
+	wire [7:0] Row, Col;
 	assign Row = {Sw15, Sw14, Sw13, Sw12, Sw11, Sw10, Sw9, Sw8};
 	assign Col = {Sw7, Sw6, Sw5, Sw4, Sw3, Sw2, Sw1, Sw0};
 
@@ -158,7 +140,7 @@ module vga_top(
 	//assign An4	=  !(ssdscan_clk);  // when ssdscan_clk = 1
 	assign {An7, An6, An5, An4, An3, An2, An1} = {7'b1111111};
 	
-	always @ (ssdscan_clk, SSD0, SSD1, SSD2, SSD3)
+	always @ (ssdscan_clk, SSD0)
 	begin : SSD_SCAN_OUT
 		case (ssdscan_clk) 
 				  1'b0: SSD = SSD0;
